@@ -25,6 +25,7 @@
 
     <!-- Le styles -->
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../assets/css/greasy-home.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -79,11 +80,11 @@
       <div class="hero-unit">
         <h1>Welcome to Greasy!</h1>
         <p>Greasy is a web application dedicated to making the process of showing multiple PowerPoint presentations in order as seamlessly as possible.</p>
-        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+        <p><a class="btn btn-primary btn-large">Sign up &raquo;</a></p>
       </div>
 
       <!-- Example row of columns -->
-      <div class="row">
+      <!--<div class="row">
         <div class="span6">
           <h2>Create a Portfolio</h2>
           <p>Start managing your presentations. </p>
@@ -91,21 +92,41 @@
         </div>
         <div class="span6">
           <h2>Upload to a Portfolio</h2>
-          <p>Find a Portfolio to upload to. </p>
+          <p>Find a Portfolio to upload to. </p>-->
           
-			<script type="text/javascript">
+			<!--<script type="text/javascript">
     		//Seting up Filepicker.io with your api key
     		filepicker.setKey('AP4FHTsYJQ7Obfhxr18Tdz');
-			</script>
-          <input type="filepicker" class="btn" name="Upload a PowerPoint"/>
+			</script>-->
+          <!--<input type="filepicker" class="btn" name="Upload a PowerPoint"/>-->
+          <!--<form action="upload_file.php" method="post"
+			enctype="multipart/form-data">
+			<label for="file">Filename:</label>
+			<input type="file" name="file" id="file" /> 
+			<br />
+			<input type="submit" name="submit" value="Submit" />
+		</form>-->
+		<!--<?php
+			if ($_FILES["file"]["error"] > 0)
+  			{
+ 			 echo "Error: " . $_FILES["file"]["error"] . "<br />";
+ 			 }
+			else
+  			{
+  				echo "Upload: " . $_FILES["file"]["name"] . "<br />";
+  				echo "Type: " . $_FILES["file"]["type"] . "<br />";
+  				echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
+  				echo "Stored in: " . $_FILES["file"]["tmp_name"];
+  			}
+  			exec('convertToPNG.sh', "file")
+		?>
           
        </div>
-      </div>
+      </div>-->
 
-      <hr>
 
       <footer>
-        <p>&copy; Greasy 2012</p>
+        <p style="color: rgba(255, 255, 255, 0.8)">&copy; Greasy 2012</p>
       </footer>
 
     </div> <!-- /container -->
