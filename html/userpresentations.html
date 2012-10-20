@@ -9,7 +9,7 @@
 
     <!-- Le styles -->
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
-		<link href="../assets/css/greasy-manage.css" rel="stylesheet">
+		<link href="../assets/css/greasy-pres.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -48,7 +48,10 @@
      */
 
     $(function() {
-      $("#sortable").sortable();
+      $("#sortable1").sortable();
+      $("#sortable2").sortable();
+      $("#sortable3").sortable();
+      $("#sortable4").sortable();
     });
 
 /*
@@ -118,8 +121,11 @@ function addPresentationCover(url) {
 
       <!-- Example row of columns -->
       <div class="row">
-        <div class="span12">
-          <ul id="sortable"> </ul>
+        <div class="span6">
+          <ul class="sortable" id="sortable1"> </ul>
+          <ul class="sortable" id="sortable2"> </ul>
+          <ul class="sortable" id="sortable3"> </ul>
+          <ul class="sortable" id="sortable4"> </ul>
        </div>
       </div>
 
@@ -134,7 +140,7 @@ function addPresentationCover(url) {
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../assets/js/greasy-manage.js"></script>
+    <script src="../assets/js/greasy-pres.js"></script>
 
   </body>
 </html>

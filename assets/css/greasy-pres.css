@@ -1,0 +1,39 @@
+.liste {
+border: 5px solid white;
+box-shadow: 0px 0px 3px; 2px;
+font-size: 17px;
+list-style-type: none;
+}
+
+div.thumb{
+background-image: url('http://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Solid_black.svg/200px-Solid_black.svg.png');
+background-size: cover;
+width: 100%;
+height: 100%;
+}
+
+ul.sortable li {
+width: 140px;
+height: 140px;
+cursor: pointer;
+				margin-left: 50px;
+}
+
+ul.sortable {
+display: block;
+width: 1000px;
+height: 150px;
+padding: 20px;
+margin: 0px;
+margin-bottom: 20px;
+background-color: #EEE;
+}
+
+span.imgnum {
+position: relative;
+top: 7px;
+left: -40px;
+color: black;
+z-index: 3;
+text-shadow: 0px 0px #666;
+}
