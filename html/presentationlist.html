@@ -1,0 +1,10 @@
+<div class="row">
+	<% @presentations.each do |presentation| %>
+  <div class="span12">
+    <%= presentation.name %>
+    <%= link_to 'Remove', presentation, :confirm => 'Are you sure?', :method => :delete %>
+<% end %>
+</table>
+
+	
+</div>

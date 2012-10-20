@@ -1,8 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <meta charset="utf-8">
+	<title>jQuery UI Example Page</title>
+	<link href="css/ui-lightness/jquery-ui-1.9.0.custom.css" rel="stylesheet">
+	<script src="js/jquery-1.8.2.js"></script>
+	<script src="js/jquery-ui-1.9.0.custom.js"></script>
+	<script>
+	$(function() {
+		
+		$( "#accordion" ).accordion();
+		
+
+		
+		var availableTags = [
+			"ActionScript",
+			"AppleScript",
+			"Asp",
+			"BASIC",
+			"C",
+			"C++",
+			"Clojure",
+			"COBOL",
+			"ColdFusion",
+			"Erlang",
+			"Fortran",
+			"Groovy",
+			"Haskell",
+			"Java",
+			"JavaScript",
+			"Lisp",
+			"Perl",
+			"PHP",
+			"Python",
+			"Ruby",
+			"Scala",
+			"Scheme"
+		];
+		$( "#autocomplete" ).autocomplete({
+			source: availableTags
+		});
+		
+
+		
+		$( "#button" ).button();
+		$( "#radioset" ).buttonset();
+		
+
+		
+		$( "#tabs" ).tabs();
+		
+
+		
+		$( "#dialog" ).dialog({
+			autoOpen: false,
+			width: 400,
+			buttons: [
+				{
+					text: "Ok",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				},
+				{
+					text: "Cancel",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			]
+		});
+
+		// Link to open the dialog
+		$( "#dialog-link" ).click(function( event ) {
+			$( "#dialog" ).dialog( "open" );
+			event.preventDefault();
+		});
+		
+
+		
+		$( "#datepicker" ).datepicker({
+			inline: true
+		});
+		
+
+		
+		$( "#slider" ).slider({
+			range: true,
+			values: [ 17, 67 ]
+		});
+		
+
+		
+		$( "#progressbar" ).progressbar({
+			value: 20
+		});
+		
+
+		// Hover states on the static widgets
+		$( "#dialog-link, #icons li" ).hover(
+			function() {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function() {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+	});
+	</script>
+	<style>
+	body{
+		font: 62.5% "Trebuchet MS", sans-serif;
+		margin: 50px;
+	}
+	.demoHeaders {
+		margin-top: 2em;
+	}
+	#dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+	#icons {
+		margin: 0;
+		padding: 0;
+	}
+	#icons li {
+		margin: 2px;
+		position: relative;
+		padding: 4px 0;
+		cursor: pointer;
+		float: left;
+		list-style: none;
+	}
+	#icons span.ui-icon {
+		float: left;
+		margin: 0 4px;
+	}
+	</style>
     <meta charset="utf-8">
-    <title>Greasy</title>
+    <title>Upload-Greasy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -43,9 +187,9 @@
           <a class="brand" href="#">Greasy</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="index.html">Home</a></li>
-              <li><a href="userpresentations.html">Presentations</a></li>
-              <li><a href="presentation.html">Start Presentation</a></li>
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -72,28 +216,32 @@
     <div class="container">
 
       <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-        <h1>Welcome to Greasy!</h1>
-        <p>Greasy is a web application dedicated to making the process of showing multiple PowerPoint presentations in order as seamlessly as possible.</p>
-        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-      </div>
 
       <!-- Example row of columns -->
       <div class="row">
-        <div class="span6">
-          <h2>Create a Portfolio</h2>
-          <p>Start managing your presentations. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-        <div class="span6">
-          <h2>Upload to a Portfolio</h2>
-          <p>Find a Portfolio to upload to. </p>
-          <script src="https://api.filepicker.io/v0/filepicker.js"></script>
+        <div class="span12">
+          <!-- Adds the Filepicker.io javascript library to the page -->
+<script src="https://api.filepicker.io/v0/filepicker.js"></script>
 <script type="text/javascript">
     //Seting up Filepicker.io with your api key
     filepicker.setKey('A9ho74mSrS9OKTDvef5vgz');
 </script>
-          <input type="filepicker-dragdrop"/>
+<input type="filepicker-dragdrop"/>
+<div id="sortable" class="ui-sortable">
+	<% @presentations.each do |presentation| %>
+  	<li class ="ui-state-default">
+  		<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+    <%= presentation.name %>
+    <%= link_to 'Remove', presentation, :confirm => 'Are you sure?', :method => :delete %>
+    </li>
+<% end %>
+
+
+	
+</div>
+
+
+
        </div>
       </div>
 
