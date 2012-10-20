@@ -67,7 +67,7 @@ $(document).ready(function() {
 			listItems.sort(function(a,b){
 				var nameA = $(a).attr('id');
 				var nameB = $(b).attr('id');
-				return order[nameA] > order[nameB];
+				return order[nameA] <= order[nameB];
 			});
 
 			$(myList).append(listItems);
