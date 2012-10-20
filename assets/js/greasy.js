@@ -33,7 +33,7 @@ $(document).ready(function() {
 		$('ul#sortable').append(string);
 
 		// Add Transition Slide
-		string = "<div id='" + presentations[i].name + "' class='item";
+		string = "<div id='" + presentations[i].name + "' class='item transition";
 		if (i == 0) string += " active";
 		string += "'><div class='transition-box'><span class='transition-next'>Next Up:</span>";
 		string += "<span class='transition-title'>" + presentations[i].title + "</span>";
