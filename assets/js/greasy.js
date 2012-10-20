@@ -1,5 +1,18 @@
 var menuToggled = false;
 var slideOrderToggled = false;
+var imgPath = "../assets/img/presentation_images/";
+var order = new Array();
+
+var presentations = new Array();
+presentations.push(new Presentation("justin", 2));
+presentations.push(new Presentation("nate", 2));
+presentations.push(new Presentation("grey", 2));
+presentations.push(new Presentation("raghav", 2));
+
+function Presentation (name, slides) {
+	this.name = name;
+	this.slides = slides;
+}
 
 $(document).keydown(function(event) {
 	if (event.which == 37) {
@@ -9,17 +22,64 @@ $(document).keydown(function(event) {
 	}
 });
 
+$(document).ready(function() {
+
+	$('.carousel').carousel('pause');
+
+	for (var i = 0; i < 4; i++) {
+		var string = "<li id='" + presentations[i].name + "' class='ui-state-default'><img src='" + imgPath + "" + presentations[i].name + "-001.png' />";
+		string += "<span>Presentation " + (i + 1) + "</span></li>";
+		$('ul#sortable').append(string);
+
+		for (var j = 1; j <= presentations[i].slides; j++) {
+			var number = "" + j;
+			if (j < 10) number = "0" + number;
+			if (j < 100) number = "0" + number;
+			var name = presentations[i].name + "-" + number;
+
+			string = "<div id='" + presentations[i].name + "' class='item";
+			if (i + j == 1) string += " active";
+			string += "'><img src='" + imgPath + name + ".png' />";
+			string += "</div>";
+			$('div.carousel-inner').append(string);
+		}
+	}
+
+	$( "#sortable" ).sortable({
+		update: function(event, ui) {
+			var info = $(this).sortable('toArray');
+			for (var i = 0; i < info.length; i++) {
+				order[info[i]] = i;
+			}
+
+			var myList = $('div.carousel-inner');
+			var listItems = myList.children('div').get();
+			listItems.sort(function(a,b){
+				var nameA = $(a).attr('id');
+				var nameB = $(b).attr('id');
+				return order[nameA] > order[nameB];
+			});
+
+			$(myList).append(listItems);
+		}
+	});
+
+	$( "#sortable" ).disableSelection();
+});
+
 $("#menu-handle").click(function() {
-	if (!menuToggled) {
-		menuToggled = true;
-		$('#menu').animate({left: '+=100'}, 300, function() { 
-			$('#menu-handle').animate({opacity: '1.0'}, 200, function() {});
-		});
-	} else {
-		menuToggled = false;
-		$('#menu').animate({left: '-=100'}, 300, function() {
-			$('#menu-handle').animate({opacity: '0.5'}, 200, function() {});
-		});
+	if (!slideOrderToggled) {
+		if (!menuToggled) {
+			menuToggled = true;
+			$('#menu').animate({left: '+=100'}, 300, function() { 
+				$('#menu-handle').animate({opacity: '1.0'}, 200, function() {});
+			});
+		} else {
+			menuToggled = false;
+			$('#menu').animate({left: '-=100'}, 300, function() {
+				$('#menu-handle').animate({opacity: '0.5'}, 200, function() {});
+			});
+		}
 	}
 });
 
@@ -34,6 +94,7 @@ $("#menu-handle").hover(function() {
 		}
 	}
 );
+
 
 $("button#exit").click(function() {
 	window.location = 'userpresentations.html';
