@@ -1,0 +1,49 @@
+body {
+overflow: hidden;
+}
+
+#menu {
+position: absolute;
+width: 500px;
+left: -507px;
+top: -10%;
+height: 120%;
+background-color: #DDD;
+box-shadow:  4px 4px 4px 1px #555;
+}
+
+button#slides {
+position: absolute;
+top: 18%;
+left: 420px;
+width: 70px;
+}
+
+button#exit {
+position: absolute;
+top: 10%;
+left: 420px;
+width: 70px;
+}
+
+div#vr {
+position: absolute;
+	top: 10%;
+	left: 400px;
+	width:1px;
+	height:80%;
+	background-color:#AAA;
+}
+
+#menu-handle {
+position: absolute;
+top: 50%;
+left: 500px;
+width: 24px;
+height: 50px;
+background-color: #DDD;
+border-bottom-right-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+box-shadow:  4px 4px 4px 1px #555;
+opacity: 0.5;
+}
