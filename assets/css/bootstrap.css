@@ -5772,3 +5772,9 @@ a.badge:hover {
 .affix {
   position: fixed;
 }
+
+.liste {
+	border-style: solid;
+	border-color: light-gray;
+	margin-bottom: 2px;
+}
