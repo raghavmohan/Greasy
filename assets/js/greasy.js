@@ -48,6 +48,7 @@ $(document).ready(function() {
 			var name = presentations[i].name + "-" + number;
 
 			string = "<div id='" + presentations[i].name + "' class='item";
+			if (j == presentations[i].slides) string += " last";
 			string += "'><img src='" + imgPath + name + ".png' />";
 			string += "</div>";
 			$('div.carousel-inner').append(string);
@@ -74,7 +75,21 @@ $(document).ready(function() {
 	});
 
 	$( "#sortable" ).disableSelection();
+
+	$('#myCarousel').bind('slid', function() {
+		var object = $(".item.active");
+		if (object.hasClass('last')) {
+			var nextID = object.next().attr('id');
+			if (nextID)
+				showNotification(nextID);
+		}
+	});
 });
+
+function showNotification(name) {
+	$("div.notification").html("<span>Get Ready " + name + "!</span>");
+	$("div.notification").fadeIn(400).delay(2500).fadeOut(400);
+}
 
 $("#menu-handle").click(function() {
 	if (!slideOrderToggled) {
