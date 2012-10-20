@@ -9,7 +9,7 @@
 
     <!-- Le styles -->
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
-		<link href="../assets/css/manage.css" rel="stylesheet">
+		<link href="../assets/css/greasy-manage.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -87,21 +87,6 @@
 
     <form id="reordering"></form>
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../assets/js/bootstrap-transition.js"></script>
-    <script src="../assets/js/bootstrap-alert.js"></script>
-    <script src="../assets/js/bootstrap-modal.js"></script>
-    <script src="../assets/js/bootstrap-dropdown.js"></script>
-    <script src="../assets/js/bootstrap-scrollspy.js"></script>
-    <script src="../assets/js/bootstrap-tab.js"></script>
-    <script src="../assets/js/bootstrap-tooltip.js"></script>
-    <script src="../assets/js/bootstrap-popover.js"></script>
-    <script src="../assets/js/bootstrap-button.js"></script>
-    <script src="../assets/js/bootstrap-collapse.js"></script>
-    <script src="../assets/js/bootstrap-carousel.js"></script>
-    <script src="../assets/js/bootstrap-typeahead.js"></script>
 
     <!-- Adds the Filepicker.io javascript library to the page -->
     <script src="https://api.filepicker.io/v0/filepicker.js"></script>
@@ -114,24 +99,40 @@
       var presentations = new Array();
 
       var port = {
-        name: "portfolioName",
+        name: "Facebook Hackathon Individual Presentations",
         id: 1337,
-        countPresentations: 2,
+        countPresentations: 4,
         1: {
-          name: "presentation A",
+          name: "PPT --> PNG",
           id: 42,
           ownerName: "Nate",
           order: 1,
           countSlides: 1,
-          1: "http://www.pptback.com/uploads/party-party%20wave-backgrounds-powerpoint.jpg"
+          1: "../assets/img/presentation_images/nate-001.png"
         },
         2: {
-          name: "presentation B",
+          name: "Database Work",
           id: 43,
           ownerName: "Raghav",
           order: 2,
           countSlides: 1,
-          1: "http://www.pptback.com/uploads/party-party%20wave-backgrounds-powerpoint.jpg"
+          1: "../assets/img/presentation_images/raghav-001.png"
+        },
+        3: {
+          name: "Introduction",
+          id: 44,
+          ownerName: "Justin",
+          order: 3,
+          countSlides: 1,
+          1: "../assets/img/presentation_images/justin-001.png"
+        },
+        4: {
+          name: "Presentation Flow",
+          id: 44,
+          ownerName: "Grey",
+          order: 4,
+          countSlides: 1,
+          1: "../assets/img/presentation_images/grey-001.png"
         }
       }
 
@@ -192,7 +193,6 @@
             '<img class="previewpic" src="'+pres[1]+'" />' +
             '<div>'+pres['ownerName']+'</div>' +
             '<div>'+pres['name']+'</div>' +
-            '<div>X</div>' +
           '</li>'
         );
         $('#reordering').append(
