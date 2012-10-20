@@ -30,57 +30,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
 
-
-    <!-- Adds the Filepicker.io javascript library to the page -->
-    <script src="https://api.filepicker.io/v0/filepicker.js"></script>
-    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-    <script type="text/javascript">
-      //Seting up Filepicker.io with your api key
-    filepicker.setKey('A9ho74mSrS9OKTDvef5vgz');
-
-    /*
-    // Test stuff
-    $("#addPhoto").click(function(event) {
-    addPresentationCover('http://pages.cs.wisc.edu/~mohan/assets/img/raghavmohan.png');
-    event.preventDefault();
-    });
-     */
-
-    $(function() {
-      $("#sortable").sortable();
-    });
-
-/*
-// Make presentation covers sortable
-$("#makeSortable").click(function(event) {
-event.preventDefault();
-$("#covers").sortable();
-$("#covers").disableSelection();
-});
-
-// Get JSON of presentation URLS
-console.log("hello");
-var presentationsURL = $("#presentations").html();
-console.log(presentationsURL);
-/*
-$.getJSON(presentationsURL, function(json) {
-loadPresentationCovers(json);
-});
- */
-
-function loadPresentationCovers(presentationsJSON) {
-  // TODO
-}
-
-function addPresentationCover(url) {
-  $('#sortable').append(
-      '<li class="ui-state-default"><img src="'+url+'" height="50" width="50"></img></li>'
-      );
-}
-
-
-</script>
   </head>
 
   <body>
@@ -110,65 +59,22 @@ function addPresentationCover(url) {
       </div>
     </div>
 
-    <div id="presentations">http://graph.facebook.com/nathanielsullivan</div>
-
     <div class="container">
+
+      <h1 id="title"></h1>
 
       <!-- Main hero unit for a primary marketing message or call to action -->
 
       <!-- Example row of columns -->
       <div class="row">
         <div class="span12">
-          <ul id="sortable">
-            	<li class="span3 liste">
-            		<div>
-            			<img class="previewpic" src="http://www.pptback.com/uploads/other-futuristic-backgrounds-powerpoint.jpg" />
-            		</div>
-            		<div>
-            			Derp
-            		</div>
-            		<div>
-            			REMOVE
-            		</div>
-            	</li>
-            	<li class="span3 liste">
-            		<div>
-            			<img class="previewpic" src="http://www.pptback.com/uploads/party-party%20wave-backgrounds-powerpoint.jpg" />
-            		</div>
-            		<div>
-            			Derp
-            		</div>
-            		<div>
-            			REMOVE
-            		</div>
-            	</li>
-            	<li class="span3 liste">
-            		<div>
-            			<img class="previewpic" src="http://www.pptback.com/uploads/party-party%20wave-backgrounds-powerpoint.jpg" />
-            		</div>
-            		<div>
-            			Derp
-            		</div>
-            		<div>
-            			REMOVE
-            		</div>
-            	</li>
-            	<li class="span3 liste">
-            		<div>
-            			<img class="previewpic" src="http://www.pptback.com/uploads/party-party%20wave-backgrounds-powerpoint.jpg" />
-            		</div>
-            		<div>
-            			Derp
-            		</div>
-            		<div>
-            			REMOVE
-            		</div>
-            	</li>
-            	
-            	
-
-          </ul>
-       </div>
+          <ul id="sortable"></ul>
+        </div>
+      </div>
+      <div>
+        <form id="submitReordering" class="btn">
+          <input type="submit" value="Save"></input>
+        </form>
       </div>
 
       <hr>
@@ -178,6 +84,8 @@ function addPresentationCover(url) {
       </footer>
 
     </div> <!-- /container -->
+
+    <form id="reordering"></form>
 
     <!-- Le javascript
     ================================================== -->
@@ -195,5 +103,120 @@ function addPresentationCover(url) {
     <script src="../assets/js/bootstrap-carousel.js"></script>
     <script src="../assets/js/bootstrap-typeahead.js"></script>
 
+    <!-- Adds the Filepicker.io javascript library to the page -->
+    <script src="https://api.filepicker.io/v0/filepicker.js"></script>
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <script type="text/javascript">
+      //Seting up Filepicker.io with your api key
+      filepicker.setKey('A9ho74mSrS9OKTDvef5vgz');
+
+      var presentations = new Array();
+
+      var port = {
+        name: "portfolioName",
+        id: 1337,
+        countPresentations: 2,
+        1: {
+          name: "presentation A",
+          id: 42,
+          ownerName: "Nate",
+          order: 1,
+          countSlides: 1,
+          1: "http://www.pptback.com/uploads/party-party%20wave-backgrounds-powerpoint.jpg"
+        },
+        2: {
+          name: "presentation B",
+          id: 43,
+          ownerName: "Raghav",
+          order: 2,
+          countSlides: 1,
+          1: "http://www.pptback.com/uploads/party-party%20wave-backgrounds-powerpoint.jpg"
+        }
+      }
+
+      loadPortfolio(port);
+
+      $("#submitReordering").click(function(event) {
+        console.log($("#reordering").length);
+        while (true);
+        var h = 1/0;
+        var presentationTags = $("#reordering").children;
+        console.log(presentationTags);
+        for (var i = 0; i < presentationTags.length; i++) {
+          presentationTags[i].setAttribute('order', presentation[presentationTags[i].getAttribute('name')]);
+          alert("Reorder");
+        }
+      });
+
+      // TODO: get data from PHP
+      // Assume we have a JSON representing the portfolio
+      // json = {
+      //   name: portfolioName,
+      //   id: uniquePortfolioID,
+      //   countPresentations: 12,
+      //   1: presentationJSON,
+      //   2: presentationJSON,
+      //   ...
+      // }
+      // 
+      // We have a JSON for each presentation
+      // json = {
+      //   name: presentationName,
+      //   id: uniquePresentationID,
+      //   ownerName: presentationOwnerName,
+      //   order: orderInPortfolio,
+      //   countSlides: 20,
+      //   1: urlOfSlide,
+      //   2: urlOfSlide,
+      //   ...
+      // }
+
+      /**
+       * Presentations must be in order.
+       */
+      function loadPortfolio(portfolio) {
+        console.log("loading");
+        $("#title").html(portfolio['name']);
+        var count = portfolio['countPresentations'];
+        for (var i = 1; i <= count; i++) {
+          loadPresentation(portfolio[i]);
+        }
+      }
+
+      function loadPresentation(pres) {
+        console.log("loadPresentation");
+        presentations[pres['id']] = pres;
+        $("#sortable").append(
+          '<li class="span3 liste" name="'+pres['id']+'">' +
+            '<img class="previewpic" src="'+pres[1]+'" />' +
+            '<div>'+pres['ownerName']+'</div>' +
+            '<div>'+pres['name']+'</div>' +
+            '<div>X</div>' +
+          '</li>'
+        );
+        $('#reordering').append(
+          '<input name="'+pres['id']+'" value="'+pres['order']+'" />'
+        );
+      }
+
+      $(function() {
+        $("#sortable").sortable({
+          start: function(event, ui) {
+            // TODO: display number
+          },
+          update: function(event, ui) {
+            var presentationTags = $("#sortable").children();
+            console.log(presentationTags[0]);
+            for (var i = 0; i < presentationTags.length; i++) {
+              var id = presentationTags[i].getAttribute('name');
+              presentations[id]['order'] = i + 1;
+            }
+          }
+        })
+      });
+
+    </script>
   </body>
+
 </html>
