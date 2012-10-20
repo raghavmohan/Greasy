@@ -1,0 +1,25 @@
+body {
+	background-image:url('../img/homepage.png');
+	background-size: cover;
+}
+
+div.hero-unit {
+	margin-top: 100px;
+border-radius: 0px;
+background-color: rgba(255, 255, 255, 0.6);
+box-shadow: 0px 0px 5px 1px;
+}
+
+div.hero-unit h1 {
+	margin-bottom: 20px;
+}
+
+div.hero-unit a.btn {
+background: -webkit-linear-gradient(top, rgba(255,140,17,1) 0%,rgba(188,98,1,1) 100%);
+}
+
+hr {
+border-radius: 0px;
+border-color: rgba(255, 255, 255, 0.6);
+box-shadow: 0px 0px 5px 1px;
+}
