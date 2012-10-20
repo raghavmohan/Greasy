@@ -4,12 +4,13 @@ var imgPath = "../assets/img/presentation_images/";
 var order = new Array();
 
 var presentations = new Array();
-presentations.push(new Presentation("justin", 2));
-presentations.push(new Presentation("nate", 2));
-presentations.push(new Presentation("grey", 2));
-presentations.push(new Presentation("raghav", 2));
+presentations.push(new Presentation("Introduction", "justin", 2));
+presentations.push(new Presentation("Flow", "nate", 2));
+presentations.push(new Presentation("PPT --> PNG", "grey", 2));
+presentations.push(new Presentation("Database", "raghav", 2));
 
-function Presentation (name, slides) {
+function Presentation (title, name, slides) {
+	this.title = title;
 	this.name = name;
 	this.slides = slides;
 }
@@ -31,6 +32,15 @@ $(document).ready(function() {
 		string += "<span>Presentation " + (i + 1) + "</span></li>";
 		$('ul#sortable').append(string);
 
+		// Add Transition Slide
+		string = "<div id='" + presentations[i].name + "' class='item";
+		if (i == 0) string += " active";
+		string += "'><div class='transition-box'><span class='transition-next'>Next Up:</span>";
+		string += "<span class='transition-title'>" + presentations[i].title + "</span>";
+		string += "<span class='transition-author'>" + presentations[i].name + "</span>";
+		string += "</div></div>";
+		$('div.carousel-inner').append(string);
+
 		for (var j = 1; j <= presentations[i].slides; j++) {
 			var number = "" + j;
 			if (j < 10) number = "0" + number;
@@ -38,7 +48,6 @@ $(document).ready(function() {
 			var name = presentations[i].name + "-" + number;
 
 			string = "<div id='" + presentations[i].name + "' class='item";
-			if (i + j == 1) string += " active";
 			string += "'><img src='" + imgPath + name + ".png' />";
 			string += "</div>";
 			$('div.carousel-inner').append(string);
