@@ -5,3 +5,12 @@ By Justin Starry, Raghav Mohan, Nate Sullivan and Grey Hensley
 
 Greasy Overview
   Greasy is a web application dedicated to making the process of showing multiple PowerPoint presentations in order as seamlessly as possible.
+
+Greasy Test
+  One can play around with jQuery Greasy Implementations at 
+  http://greasy.herokuapp.com/html/index.html
+
+  TODOs:
+   - Implement a backend db framework
+   - Implement user login functionality, sharding files, etc.
+
