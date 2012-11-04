@@ -8,7 +8,7 @@ Greasy Overview
 
 Greasy Test
   One can play around with jQuery Greasy Implementations at 
-  http://greasy.herokuapp.com/html/index.html
+  http://greasy.herokuapp.com
 
   TODOs:
    - Implement a backend db framework
